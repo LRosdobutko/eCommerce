@@ -21,4 +21,11 @@ class CategoriesController < ApplicationController
     end
 
   end
+
+  private
+    def category_params
+      params.expect(category: [:name, :description])
+    end
+
+
 end
