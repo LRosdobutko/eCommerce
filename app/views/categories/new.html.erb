@@ -3,16 +3,23 @@
 <%= form_with model: @category do |form| %>
   <div>
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name %><br>
+    <% @category.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
     <%= form.label :description %><br>
-    <%= form.textarea :description %>
+    <%= form.text_area :description %><br>
+    <% @category.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
   </div>
 
   <div>
     <%= form.submit %>
+  </div>
 
 <% end %>
 
