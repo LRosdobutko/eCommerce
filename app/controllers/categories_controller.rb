@@ -22,6 +22,22 @@ class CategoriesController < ApplicationController
 
   end
 
+
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find(params[:id])
+
+    if @category.update(Category_params)
+      redirect_to @category
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+
   private
   def category_params
     params.require(:category).permit(:name, :description)

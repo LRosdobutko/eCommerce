@@ -1,2 +1,11 @@
 <h1><%= @category.name %></h1>
 <p><%= @category.description %></p>
+
+<p>Products:</p>
+<ul>
+    <% @category.products.each do |product| %>
+        <li>
+            <%= link_to product.name.titleize, product_path(@category, product) %>
+        </li>
+    <% end %>
+</ul>
