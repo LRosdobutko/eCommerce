@@ -15,8 +15,8 @@ require "open-uri"
 Genre.delete_all
 Product.delete_all
 
-# Define a list of computer-related categories
-categories = [
+# Define a list of computer-related genres
+genres = [
   { name: 'Storage', description: 'Hard drives, SSDs, and other storage devices' },
   { name: 'Processors', description: 'CPUs and related components' },
   { name: 'Motherboards', description: 'Motherboards for all types of computers' },
@@ -27,8 +27,8 @@ categories = [
   { name: 'Monitors', description: 'Displays for computers, TVs, and gaming' }
 ]
 
-# Create the categories
-categories.each do |Genre|
+# Create the genres
+genres.each do |Genre|
   c = Genre.create(name: Genre[:name], description: Genre[:description])
   puts "Created Genre: #{c.name}"
 
