@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  belongs_to :category
+  belongs_to :Genre
 
   validates :name, presence: true, length: {maximum: 25}
   validates :description, presence: true

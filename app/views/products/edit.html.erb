@@ -27,9 +27,9 @@
   </div>
 
   <div>
-    <%= form.label :category_id, "Category" %><br>
-    <%= form.collection_select(:category_id, Category.all, :id, :name, prompt: "Select a category") %><br>
-    <% @product.errors.full_messages_for(:category_id).each do |message| %>
+    <%= form.label :Genre_id, "Genre" %><br>
+    <%= form.collection_select(:Genre_id, Genre.all, :id, :name, prompt: "Select a Genre") %><br>
+    <% @product.errors.full_messages_for(:Genre_id).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

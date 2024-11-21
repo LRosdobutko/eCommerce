@@ -1,21 +1,21 @@
-class CategoriesController < ApplicationController
+class GenresController < ApplicationController
   def index
-    @categories = Category.all
+    @genres = Genre.all
   end
 
   def show
-    @category = Category.find(params[:id])
+    @genre = Genre.find(params[:id])
   end
 
   def new
-    @category = Category.new
+    @genre = Genre.new
   end
 
   def create
-    @category = Category.new(category_params)
+    @genre = Genre.new(Genre_params)
 
-    if @category.save
-      redirect_to @category
+    if @genre.save
+      redirect_to @genre
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,14 +24,14 @@ class CategoriesController < ApplicationController
 
 
   def edit
-    @category = Category.find(params[:id])
+    @genre = Genre.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
+    @genre = Genre.find(params[:id])
 
-    if @category.update(category_params)
-      redirect_to @category
+    if @genre.update(Genre_params)
+      redirect_to @genre
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,8 +39,8 @@ class CategoriesController < ApplicationController
 
 
   private
-  def category_params
-    params.require(:category).permit(:name, :description)
+  def Genre_params
+    params.require(:Genre).permit(:name, :description)
   end
 
 

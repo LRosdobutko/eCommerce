@@ -1,9 +1,9 @@
 <h1>Categories</h1>
 
 <ul>
-  <% @categories.each do |category| %>
+  <% @genres.each do |Genre| %>
     <li>
-      <%= link_to category.name, category %>
+      <%= link_to Genre.name, Genre %>
     </li>
   <% end %>
 </ul>

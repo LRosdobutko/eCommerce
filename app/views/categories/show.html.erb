@@ -1,11 +1,11 @@
-<h1><%= @category.name %></h1>
-<p><%= @category.description %></p>
+<h1><%= @genre.name %></h1>
+<p><%= @genre.description %></p>
 
 <p>Products:</p>
 <ul>
-    <% @category.products.each do |product| %>
+    <% @genre.products.each do |product| %>
         <li>
-            <%= link_to product.name.titleize, product_path(@category, product) %>
+            <%= link_to product.name.titleize, product_path(@genre, product) %>
         </li>
     <% end %>
 </ul>

@@ -4,10 +4,10 @@ one:
   name: MyString
   description: MyString
   price_cents: 1
-  category: one
+  Genre: one
 
 two:
   name: MyString
   description: MyString
   price_cents: 1
-  category: two
+  Genre: two
