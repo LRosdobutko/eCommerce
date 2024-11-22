@@ -5,7 +5,7 @@ require "open-uri"
 Book.delete_all
 Genre.delete_all
 
-image_client = Pexels::Client.new('Gp7Huzfyg7K7oPsFPQQVomB4UL3ALXEb04oADdk92qM2dzTvtUHZJCSH')
+image_client = Pexels::Client.new()
 
 genre_names = [
   "Science Fiction", "Fantasy", "Mystery", "Thriller", "Romance",
