@@ -1,0 +1,7 @@
+<h1><%= @book.title %></h1>
+<p><%= @book.author %></p>
+<p><%= @book.publisher %></p>
+<p><%= @book.synopsis %></p>
+<p><%= number_to_currency(@book.price_cents / 100.00) %></p>
+<p><%= @book.genre.name %></p>
+<p>On Sale: <%= @book.on_sale ? 'Yes' : 'No' %></p>

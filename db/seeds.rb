@@ -20,7 +20,7 @@ genre_names.each do |genre_name|
   )
   puts "Created Genre: #{genre.name}"
 
-  rand(15..25).times do
+  rand(25..50).times do
     book = Book.create(
       title: Faker::Book.title,
       author: Faker::Book.author,

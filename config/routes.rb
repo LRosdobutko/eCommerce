@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-
-  root "genres#index"
-
-  resources :genres
-
+  resources :genres do
+    resources :books
+  end
   resources :books
-
 end

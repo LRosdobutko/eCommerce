@@ -1,0 +1,42 @@
+<%= form_with model: @book do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %><br>
+    <% @book.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %><br>
+    <% @book.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :price_cents %><br>
+    <%= form.number_field :price_cents %><br>
+    <% @book.errors.full_messages_for(:price_cents).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :genre_id, "Genre" %><br>
+    <%= form.collection_select(:genre_id, Genre.all, :id, :name, prompt: "Select a Genre") %><br>
+    <% @book.errors.full_messages_for(:genre_id).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :on_sale %><br>
+    <%= form.check_box :on_sale %>
+  </div><br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

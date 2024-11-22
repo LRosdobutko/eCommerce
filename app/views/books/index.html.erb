@@ -1,9 +1,10 @@
 <h1>Books</h1>
-
 <ul>
   <% @books.each do |book| %>
-    <li>
-      <%= link_to book.name, book %>
-    </li>
+    <%= render 'book', book: book %>
   <% end %>
 </ul>
+
+<div class="pagination">
+  <%= will_paginate @books %> <!-- This will create pagination links -->
+</div>
