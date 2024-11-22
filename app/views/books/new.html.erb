@@ -1,11 +1,10 @@
-<h1>Edit Product</h1>
+<h1>New Book</h1>
 
-
-<%= form_with model: @product do |form| %>
+<%= form_with model: @book do |form| %>
   <div>
     <%= form.label :name %><br>
     <%= form.text_field :name %><br>
-    <% @product.errors.full_messages_for(:name).each do |message| %>
+    <% @book.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -13,7 +12,7 @@
   <div>
     <%= form.label :description %><br>
     <%= form.text_area :description %><br>
-    <% @product.errors.full_messages_for(:description).each do |message| %>
+    <% @book.errors.full_messages_for(:description).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -21,7 +20,7 @@
   <div>
     <%= form.label :price_cents %><br>
     <%= form.number_field :price_cents %><br>
-    <% @product.errors.full_messages_for(:price_cents).each do |message| %>
+    <% @book.errors.full_messages_for(:price_cents).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -29,7 +28,7 @@
   <div>
     <%= form.label :Genre_id, "Genre" %><br>
     <%= form.collection_select(:Genre_id, Genre.all, :id, :name, prompt: "Select a Genre") %><br>
-    <% @product.errors.full_messages_for(:Genre_id).each do |message| %>
+    <% @book.errors.full_messages_for(:Genre_id).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -41,7 +40,10 @@
 
 
   <div>
-    <%= form.submit "Update product" %>
+    <%= form.submit %>
   </div>
+
+
+
 
 <% end %>

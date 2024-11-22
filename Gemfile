@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 gem "will_paginate", "~> 3.3"
 
+gem "pexels"
+
+gem 'image_processing'
+
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -20,7 +24,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-# Use Redis adapter to run Action Cable in production
+# Use Redis adapter to run Action Cable in bookion
 # gem "redis", ">= 4.0.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

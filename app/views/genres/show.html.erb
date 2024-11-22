@@ -1,0 +1,11 @@
+<h1><%= @genre.name %></h1>
+<p><%= @genre.description %></p>
+
+<p>Books:</p>
+<ul>
+    <% @genre.books.each do |book| %>
+        <li>
+            <%= link_to book.title.titleize, book_path(@genre, book) %>
+        </li>
+    <% end %>
+</ul>

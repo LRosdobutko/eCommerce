@@ -1,47 +1,45 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-
+require "faker"
 require "uri"
 require "open-uri"
 
+Book.delete_all
 Genre.delete_all
-Product.delete_all
 
-# Define a list of computer-related genres
-genres = [
-  { name: 'Storage', description: 'Hard drives, SSDs, and other storage devices' },
-  { name: 'Processors', description: 'CPUs and related components' },
-  { name: 'Motherboards', description: 'Motherboards for all types of computers' },
-  { name: 'Graphics Cards', description: 'GPUs for gaming and professional use' },
-  { name: 'Memory', description: 'RAM modules for different systems' },
-  { name: 'Cooling', description: 'Cooling solutions like fans and liquid cooling' },
-  { name: 'Power Supplies', description: 'PSUs for your computer builds' },
-  { name: 'Monitors', description: 'Displays for computers, TVs, and gaming' }
+#image_client = Pexels::Client.new
+
+
+genre_names = [
+  "Science Fiction", "Fantasy", "Mystery", "Thriller", "Romance",
+  "Historical", "Non-Fiction", "Horror", "Biography", "Self-Help"
 ]
 
-# Create the genres
-genres.each do |Genre|
-  c = Genre.create(name: Genre[:name], description: Genre[:description])
-  puts "Created Genre: #{c.name}"
+genre_names.each do |genre_name|
+  genre = Genre.create(
+    name: genre_name,
+    description: Faker::Lorem.sentence(word_count: 10) # Random description for genre
+  )
+  puts "Created Genre: #{genre.name}"
 
-  # Now, create products for each Genre
   rand(15..25).times do
-    p = Product.create(
-      name: "#{Faker::Commerce.product_name} #{Genre[:name]}",
-      description: Faker::Hipster.sentence(word_count: rand(10..15)),
-      price_cents: rand(5000..100_000),
-      on_sale: [true, false].sample,  # Randomly determine if the product is on sale
-      Genre: c
+    book = Book.create(
+      title: Faker::Book.title,
+      author: Faker::Book.author,
+      publisher: Faker::Book.publisher,
+      synopsis: Faker::Hipster.paragraph(sentence_count: rand(3..5)), # Random synopsis
+      price_cents: rand(500..2000), # Price in dollars
+      on_sale: [true, false].sample, # Randomly set on_sale
+      genre_id: genre.id # Associate the book with the genre
     )
 
-    puts "Created product: #{p.name} in Genre #{c.name}"
+    # pexel_response = image_client.photos.search(p.name)
+    # downloaded_image = URI.parse(pexel_response.photos[0].src["medium"]).open
+    # p.image.attach(io: downloaded_image, filename: "m-#{p.name}.jpg")
+
+    # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{p.name}")
+    # p.image.attach(io: downloaded_image, filename: "m-#{p.name}.jpg")
+    puts "Created Book: #{book.title} in Genre #{genre.name}"
   end
+
+
+
 end

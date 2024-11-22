@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :genres
 
-  resources:products
+  resources :books
+
 end
