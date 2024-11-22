@@ -8,4 +8,6 @@ class Book < ApplicationRecord
   validates :on_sale, inclusion: { in: [true, false] }
   validates :genre_id, presence: true
 
+  has_one_attached :image
+
 end

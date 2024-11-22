@@ -5,3 +5,9 @@
 <p><%= number_to_currency(@book.price_cents / 100.00) %></p>
 <p><%= @book.genre.name %></p>
 <p>On Sale: <%= @book.on_sale ? 'Yes' : 'No' %></p>
+
+<% if @book.image.attached? %>
+  <%= image_tag @book.image, size: "300x300", alt: @book.title %>
+<% else %>
+  <p>No image available</p>
+<% end %>

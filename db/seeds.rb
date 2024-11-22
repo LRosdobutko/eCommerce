@@ -5,8 +5,7 @@ require "open-uri"
 Book.delete_all
 Genre.delete_all
 
-#image_client = Pexels::Client.new
-
+image_client = Pexels::Client.new('Gp7Huzfyg7K7oPsFPQQVomB4UL3ALXEb04oADdk92qM2dzTvtUHZJCSH')
 
 genre_names = [
   "Science Fiction", "Fantasy", "Mystery", "Thriller", "Romance",
@@ -16,7 +15,7 @@ genre_names = [
 genre_names.each do |genre_name|
   genre = Genre.create(
     name: genre_name,
-    description: Faker::Lorem.sentence(word_count: 10) # Random description for genre
+    description: Faker::Hipster.paragraph(sentence_count: rand(3..5)) # Random description for genre
   )
   puts "Created Genre: #{genre.name}"
 
@@ -31,15 +30,17 @@ genre_names.each do |genre_name|
       genre_id: genre.id # Associate the book with the genre
     )
 
-    # pexel_response = image_client.photos.search(p.name)
-    # downloaded_image = URI.parse(pexel_response.photos[0].src["medium"]).open
-    # p.image.attach(io: downloaded_image, filename: "m-#{p.name}.jpg")
+    # Fetch image from Pexels based on book title
+    pexel_response = image_client.photos.search(query: book.title)
 
-    # downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{p.name}")
-    # p.image.attach(io: downloaded_image, filename: "m-#{p.name}.jpg")
+    if pexel_response.photos.any? # Check if there are any photos returned
+      downloaded_image = URI.parse(pexel_response.photos[0].src["medium"]).open
+      book.image.attach(io: downloaded_image, filename: "#{book.title.parameterize}.jpg", content_type: "image/jpg")
+      puts "Attached image from Pexels to Book: #{book.title}"
+    else
+      puts "No image found for #{book.title} on Pexels."
+    end
+
     puts "Created Book: #{book.title} in Genre #{genre.name}"
   end
-
-
-
 end
