@@ -15,7 +15,7 @@ genre_names = [
 genre_names.each do |genre_name|
   genre = Genre.create(
     name: genre_name,
-    description: Faker::Hipster.paragraph(sentence_count: rand(3..5)) # Random description for genre
+    description: Faker::Lorem.sentence(word_count: 10) # Random description for genre
   )
   puts "Created Genre: #{genre.name}"
 
@@ -24,17 +24,17 @@ genre_names.each do |genre_name|
       title: Faker::Book.title,
       author: Faker::Book.author,
       publisher: Faker::Book.publisher,
-      synopsis: Faker::Hipster.paragraph(sentence_count: rand(3..5)), # Random synopsis
+      synopsis: Faker::Lorem.paragraph(sentence_count: rand(3..5)), # Random synopsis
       price_cents: rand(500..2000), # Price in dollars
       on_sale: [true, false].sample, # Randomly set on_sale
       genre_id: genre.id # Associate the book with the genre
     )
 
-    # Fetch image from Pexels based on book title
-    pexel_response = image_client.photos.search(query: book.title)
+    pexel_response = image_client.photos.search(book.title)
 
-    if pexel_response.photos.any? # Check if there are any photos returned
-      downloaded_image = URI.parse(pexel_response.photos[0].src["medium"]).open
+    if pexel_response.photos.any?
+      # Open image URL and attach to the book
+      downloaded_image = URI.open(pexel_response.photos[0].src["medium"])
       book.image.attach(io: downloaded_image, filename: "#{book.title.parameterize}.jpg", content_type: "image/jpg")
       puts "Attached image from Pexels to Book: #{book.title}"
     else
