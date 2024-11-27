@@ -1,11 +1,12 @@
 class CartController < ApplicationController
+  before_action :get_book, only: %i[create destroy]
 
   def create
-    book_id = params[:id].to_i
     session[:cart] ||= []  # Ensure the cart is initialized
 
-    unless session[:cart].include?(book_id)
-      session[:cart] << book_id
+    unless session[:cart].include?(@book.id)
+      session[:cart] << @book.id
+      flash[:notice] = "#{@book.title} added to cart"
     end
 
     # Redirect back to the current book page
@@ -13,14 +14,20 @@ class CartController < ApplicationController
   end
 
   def destroy
-    book_id = params[:id].to_i
 
-    if session[:cart].include?(book_id)
-      session[:cart].delete(book_id)
+    if session[:cart].include?(@book.id)
+      session[:cart].delete(@book.id)
     end
 
     # Redirect back to the current book page
     redirect_back(fallback_location: root_path)
+  end
+
+  private
+
+  def get_book
+    book_id = params[:id].to_i
+    @book = Book.find(book_id)
   end
 
 end
