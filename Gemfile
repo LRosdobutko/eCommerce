@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
-gem "will_paginate", "~> 3.3"
+#gem "will_paginate", "~> 3.3"
+
+gem 'kaminari'
 
 gem "pexels"
 

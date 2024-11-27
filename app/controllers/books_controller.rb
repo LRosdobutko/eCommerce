@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.paginate(page: params[:page], per_page: 10) # Adjust the per_page as needed
+    @books = Book.page(params[:page]).per(10)  # Kaminari's pagination
   end
 
   def show

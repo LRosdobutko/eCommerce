@@ -1,11 +1,11 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.paginate(page: params[:page], per_page: 10) # Paginate genres, 10 per page
+    @genres = Genre.page(params[:page]).per(10)  # Kaminari's pagination for genres
   end
 
   def show
     @genre = Genre.find(params[:id])
-    @books = @genre.books.paginate(page: params[:page], per_page: 10) # Paginate books for each genre, 5 per page
+    @books = @genre.books.page(params[:page]).per(10)  # Kaminari's pagination for books in the selected genre
   end
 
   def new
@@ -20,9 +20,7 @@ class GenresController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
-
 
   def edit
     @genre = Genre.find(params[:id])
@@ -38,12 +36,8 @@ class GenresController < ApplicationController
     end
   end
 
-
   private
   def Genre_params
-    params.require(:Genre).permit(:name, :description)
+    params.require(:genre).permit(:name, :description)  # Ensure the param name matches the model
   end
-
-
-
 end
