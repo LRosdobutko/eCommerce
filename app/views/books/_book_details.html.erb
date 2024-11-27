@@ -11,3 +11,15 @@
 <% else %>
   <p>No image available</p>
 <% end %>
+
+<!-- Check if the book is in the cart session -->
+<% if session[:cart].include?(@book.id) %>
+  <%= button_to cart_path(@book), method: :delete do %>
+    Remove from cart
+  <% end %>
+<% end %>
+
+  <%= form_with url: cart_index_path do %>
+    <%= hidden_field_tag(:id, @book.id) %>
+    <%= button_tag "Add to cart" %>
+<% end %>

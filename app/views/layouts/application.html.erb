@@ -19,7 +19,7 @@
 
   <body>
     <%= render "layouts/search_bar" %> <!-- Render the partial from the layouts folder -->
-
+    <p><%= debug session[:cart] %></p>
     <% flash.each do |key, message| %>
       <div class="flash <%= key %>">
         <%= message %>
