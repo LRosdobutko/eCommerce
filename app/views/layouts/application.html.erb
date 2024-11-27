@@ -18,6 +18,14 @@
   </head>
 
   <body>
+    <%= render "layouts/search_bar" %> <!-- Render the partial from the layouts folder -->
+
+    <% flash.each do |key, message| %>
+      <div class="flash <%= key %>">
+        <%= message %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

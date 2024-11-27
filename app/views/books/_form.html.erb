@@ -1,16 +1,24 @@
 <%= form_with model: @book do |form| %>
   <div>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %><br>
-    <% @book.errors.full_messages_for(:name).each do |message| %>
+    <%= form.label :title %><br> <!-- Change from :name to :title -->
+    <%= form.text_field :title %><br> <!-- Change from :name to :title -->
+    <% @book.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %><br>
-    <% @book.errors.full_messages_for(:description).each do |message| %>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %><br>
+    <% @book.errors.full_messages_for(:author).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :synopsis %><br>
+    <%= form.text_area :synopsis %><br>
+    <% @book.errors.full_messages_for(:synopsis).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -25,7 +33,8 @@
 
   <div>
     <%= form.label :genre_id, "Genre" %><br>
-    <%= form.collection_select(:genre_id, Genre.all, :id, :name, prompt: "Select a Genre") %><br>
+    <%= form.collection_select :genre_id, Genre.all, :id, :name,
+        { prompt: "Select a Genre", selected: @book.genre_id } %><br>
     <% @book.errors.full_messages_for(:genre_id).each do |message| %>
       <div><%= message %></div>
     <% end %>
@@ -33,7 +42,7 @@
 
   <div>
     <%= form.label :on_sale %><br>
-    <%= form.check_box :on_sale %>
+    <%= form.check_box :on_sale, checked: @book.on_sale %>
   </div><br>
 
   <div>

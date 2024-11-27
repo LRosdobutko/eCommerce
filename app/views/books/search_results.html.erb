@@ -1,0 +1,16 @@
+<h1>Search Results</h1>
+
+<% if @books.any? %>
+  <ul>
+    <% @books.each do |book| %>
+      <li>
+        <strong><%= link_to book.title, book %></strong> by <%= book.author %> - <%= book.genre.name %>
+        <%= "(On Sale!)" if book.on_sale %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No books found for the specified criteria.</p>
+<% end %>
+
+<%= link_to "Back to Previous Page", request.referer || root_path, class: "btn btn-secondary" %>
