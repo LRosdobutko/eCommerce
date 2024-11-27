@@ -1,0 +1,13 @@
+<!-- app/views/layouts/_breadcrumb.html.erb -->
+<h3>
+  <%= link_to 'Home', root_path %>
+  - <%= link_to 'View genres', genres_path %>
+
+  <% if defined?(@genre) && @genre.present? %>
+    - <%= link_to @genre.name.titleize, genre_path(@genre) %> <!-- Link to the genre page -->
+  <% end %>
+
+  <% if defined?(@book) && @book.present? %>
+    - <%= @book.name.titleize %>
+  <% end %>
+</h3>

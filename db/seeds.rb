@@ -44,3 +44,4 @@ genre_names.each do |genre_name|
     puts "Created Book: #{book.title} in Genre #{genre.name}"
   end
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
