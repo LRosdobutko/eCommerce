@@ -14,4 +14,8 @@ class Book < ApplicationRecord
     ["author", "created_at", "genre_id", "id", "id_value", "on_sale", "price_cents", "publisher", "synopsis", "title", "updated_at"]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["genre", "image_attachment", "image_blob"]
+  end
+
 end

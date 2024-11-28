@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+
+ // app/assets/stylesheets/application.scss
+
+@import "active_admin/base";
+@import "buttons";
+@import "forms";
+@import "header";
+@import "search_bar";
+
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+// Style body
+body {
+  font-family: Arial, sans-serif;
+  background-color: $primary-color;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+// Buttons
+button {
+  background-color: $secondary-color;
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+  }
+}

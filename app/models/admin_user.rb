@@ -6,6 +6,8 @@ class AdminUser < ApplicationRecord
     ["email", "created_at", "updated_at"]
   end
 
+
+
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
