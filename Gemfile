@@ -9,6 +9,8 @@ gem 'devise'
 
 gem 'kaminari'
 
+gem 'sassc-rails'
+
 gem "pexels"
 
 gem 'image_processing'
