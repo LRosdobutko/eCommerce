@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "E Commerce" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <!--<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>-->
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-
+<head>
+  <title><%= content_for(:title) || "E Commerce" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= yield :head %>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
     <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= render "layouts/search_bar" %> <!-- Render the partial from the layouts folder -->
-    <%= render 'layouts/breadcrumb' %> <!-- The breadcrumb partial -->
-
-    <p><%= debug session[:cart] %></p>
-    <% flash.each do |key, message| %>
-      <div class="flash <%= key %>">
-        <%= message %>
-      </div>
-    <% end %>
-
-    <%= yield %>
-  </body>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          Cart
+          <% if cart.present? %>
+            <sup><%= cart.size %></sup>
+            <ul>
+              <% cart.each do |book| %>
+                <li>
+                  <%= book.title %> <%= link_to 'X', cart_path(book.id), data: { turbo_method: :delete } %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <%= render "layouts/search_bar" %> <!-- Render the partial from the layouts folder -->
+  <%= render 'layouts/breadcrumb' %> <!-- The breadcrumb partial -->
+  <p><%= debug session[:cart] %></p>
+  <% flash.each do |key, message| %>
+    <div class="flash <%= key %>">
+      <%= message %>
+    </div>
+  <% end %>
+  <%= yield %>
+</body>
 </html>
