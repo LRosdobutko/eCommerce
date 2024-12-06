@@ -5,6 +5,12 @@
       <%= form.select :search_type,
                       options_for_select([['Book Name', 'book_name'], ['Genre', 'genre']], params[:search_type]),
                       class: "search-select" %>
+
+                        <%= form.label :on_sale, "Only show books on sale:" %>
+                        <%= form.check_box :on_sale, { checked: params[:on_sale] == '1' }, '1', '0' %>
+
+                        <%= form.label :recently_added, "Only show recently added books:" %>
+                        <%= form.check_box :recently_added, { checked: params[:recently_added] == '1' }, '1', '0' %>
     </div>
 
     <div>
@@ -13,18 +19,10 @@
                           value: params[:query],
                           placeholder: "Enter book name or genre",
                           class: "search-input" %>
-    </div>
 
-    <div>
-      <%= form.label :on_sale, "Only show books on sale:" %>
-      <%= form.check_box :on_sale, { checked: params[:on_sale] == '1' }, '1', '0' %>
+      <%= form.submit "Search", class: "btn btn-primary" %>
+      <% end %>
     </div>
+<div>
 
-    <div>
-      <%= form.label :recently_added, "Only show recently added books:" %>
-      <%= form.check_box :recently_added, { checked: params[:recently_added] == '1' }, '1', '0' %>
-    </div>
-
-    <%= form.submit "Search", class: "btn btn-primary" %>
-  <% end %>
 </div>

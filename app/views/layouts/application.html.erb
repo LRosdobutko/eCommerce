@@ -13,7 +13,6 @@
   <link rel="apple-touch-icon" href="/icon.png">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_importmap_tags %>
-    <%= javascript_importmap_tags %>
 </head>
 <body>
   <header>
@@ -39,5 +38,12 @@
   <%= render 'layouts/breadcrumb' %> <!-- The breadcrumb partial -->
 
   <%= yield %>
+
+  <footer>
+    <p>
+      Admin Console:
+      <%= link_to "Login", admin_root_path, class: "admin-login-link" %> <!-- Use ActiveAdmin's default route -->
+    </p>
+  </footer>
 </body>
 </html>

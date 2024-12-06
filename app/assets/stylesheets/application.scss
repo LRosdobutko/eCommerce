@@ -16,11 +16,13 @@
 
  // app/assets/stylesheets/application.scss
 
+@import "bootstrap";
 @import "active_admin/base";
 @import "buttons";
 @import "forms";
 @import "header";
 @import "search_bar";
+
 
 $primary-color: #3498db;
 $secondary-color: #2ecc71;

@@ -1,14 +1,24 @@
 <h1><%= @genre.name.titleize %></h1>
-<p><%= @genre.description %></p>
+<p><h2><%= @genre.description %></h2></p>
 
-<p>Books:</p>
-<ul>
-  <% @books.each do |book| %>  <!-- Use @books for the paginated list -->
-    <li>
-      <%= link_to book.title.titleize, book_path(book) %>
-    </li>
+<p><h3>Books:</h3></p>
+
+<div class="book-list">
+  <% @books.each do |book| %>
+    <div class="card">
+    <div class="card-body">
+    <h5 class="card-title"><%= link_to book.title.titleize, book_path(book), class: "stretched-link" %></h5>
+  </div>
+
+    <% if book.image.attached? %>
+        <%= image_tag book.image, class: "card-img-top", alt: book.title %>
+      <% else %>
+        <img src="/placeholder-image.png" class="card-img-top" alt="No image available">
+      <% end %>
+
+    </div>
   <% end %>
-</ul>
+</div>
 
 <div class="pagination">
   <%= paginate @books %> <!-- This will create pagination links for books -->

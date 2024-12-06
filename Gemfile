@@ -17,6 +17,8 @@ gem 'stripe'
 
 gem 'image_processing'
 
+gem 'bootstrap', '~> 5.3.3'
+
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
