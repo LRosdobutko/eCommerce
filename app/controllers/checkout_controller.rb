@@ -26,10 +26,7 @@ class CheckoutController < ApplicationController
       ]
     )
 
-    redirect_to @session.url, allow_other_host: true
-
-
-
+    redirect_to root_path
 
   end
 
