@@ -13,6 +13,8 @@ gem 'sassc-rails'
 
 gem "pexels"
 
+gem 'stripe'
+
 gem 'image_processing'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
