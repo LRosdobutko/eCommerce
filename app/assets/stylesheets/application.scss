@@ -22,6 +22,8 @@
 @import "forms";
 @import "header";
 @import "search_bar";
+@import "custom";
+
 
 
 $primary-color: #3498db;
@@ -46,5 +48,37 @@ button {
 
   &:hover {
     background-color: darken($secondary-color, 10%);
+  }
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.card {
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.list-group-item {
+  font-size: 1.2rem;
+  color: #333;
+
+  &:hover {
+    background-color: #f8f9fa;
+  }
+}
+
+.pagination {
+  .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
   }
 }

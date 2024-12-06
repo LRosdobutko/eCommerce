@@ -9,8 +9,6 @@ gem 'devise'
 
 gem 'kaminari'
 
-gem 'sassc-rails'
-
 gem "pexels"
 
 gem 'stripe'
@@ -18,6 +16,8 @@ gem 'stripe'
 gem 'image_processing'
 
 gem 'bootstrap', '~> 5.3.3'
+
+gem 'dartsass-sprockets'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
 
@@ -71,7 +71,7 @@ group :development do
   gem "web-console"
 
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
-  gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+  gem 'error_highlight', '~> 0.7.0'
 end
 
 group :test do
@@ -79,3 +79,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "cssbundling-rails", "~> 1.4"

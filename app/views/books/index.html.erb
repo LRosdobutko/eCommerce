@@ -1,13 +1,15 @@
-<h1>Books</h1>
-<ul>
+<!-- Books List -->
+<h1 class="mb-4 text-primary">Books</h1>
+<div class="row">
   <% @books.each do |book| %>
-    <%= render 'book', book: book %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <%= render 'book', book: book %>
+      </div>
+    </div>
   <% end %>
-</ul>
-
-<div class="pagination">
-  <%= paginate @books %> <!-- This will create pagination links -->
 </div>
 
-
-
+<div class="d-flex justify-content-center">
+  <%= paginate @books, class: 'pagination' %> <!-- Pagination with Bootstrap -->
+</div>
