@@ -1,5 +1,4 @@
 class CheckoutController < ApplicationController
-
   def create
     book = Book.find(params[:book_id])
 
@@ -9,7 +8,7 @@ class CheckoutController < ApplicationController
     end
 
     @session = Stripe::Checkout::Session.create(
-      payment_method_types: ["card"],
+      payment_method_types: [ "card" ],
       success_url: checkout_success_url,
       cancel_url: checkout_cancel_url,
       mode: "payment",
@@ -18,23 +17,22 @@ class CheckoutController < ApplicationController
           currency: "cad",
           product_data: {
             name: book.title,
-            description: book.synopsis,
+            description: book.synopsis
           },
-          unit_amount: book.price_cents,
+          unit_amount: book.price_cents
         },
         quantity: 1
       ]
     )
 
     redirect_to root_path
-
   end
 
   def success
-    #Go here on payment success
+    # Go here on payment success
   end
 
   def cancel
-    #Go here if something failed
+    # Go here if something failed
   end
 end

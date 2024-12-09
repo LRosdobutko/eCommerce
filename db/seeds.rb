@@ -26,7 +26,7 @@ genre_names.each do |genre_name|
       publisher: Faker::Book.publisher,
       synopsis: Faker::Lorem.paragraph(sentence_count: rand(3..5)), # Random synopsis
       price_cents: rand(500..2000), # Price in dollars
-      on_sale: [true, false].sample, # Randomly set on_sale
+      on_sale: [ true, false ].sample, # Randomly set on_sale
       genre_id: genre.id # Associate the book with the genre
     )
 

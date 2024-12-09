@@ -5,11 +5,10 @@ class Genre < ApplicationRecord
   validates :description, length: { maximum: 500 }, allow_blank: true
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "description", "id", "name", "updated_at"]
+    [ "created_at", "description", "id", "name", "updated_at" ]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["books"]
+    [ "books" ]
   end
-
 end

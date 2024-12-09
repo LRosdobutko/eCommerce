@@ -1,25 +1,28 @@
 source "https://rubygems.org"
 
-#gem "will_paginate", "~> 3.3"
+# gem "will_paginate", "~> 3.3"
 
-gem 'activeadmin'
+gem "activeadmin"
 
 # Plus integrations with:
-gem 'devise'
+gem "devise"
 
-gem 'kaminari'
+gem "kaminari"
 
 gem "pexels"
 
-gem 'stripe'
+gem "stripe"
 
-gem 'image_processing'
+gem "image_processing"
 
-gem 'bootstrap', '~> 5.3.3'
+gem "bootstrap", "~> 5.3.3"
 
-gem 'dartsass-sprockets'
+gem "rubocop"
+gem "rubocop-rails"
 
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+gem "dartsass-sprockets"
+
+gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "main"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.1"
@@ -71,7 +74,7 @@ group :development do
   gem "web-console"
 
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
-  gem 'error_highlight', '~> 0.7.0'
+  gem "error_highlight", "~> 0.7.0"
 end
 
 group :test do
